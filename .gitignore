@@ -1,0 +1,19 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Data and runtime files
+Data/
+Frontend/Files/
+
+# VS Code settings
+.vscode/
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
