@@ -1,6 +1,7 @@
 # J.A.R.V.I.S - Your Personal AI Assistant
 
-![J.A.R.V.I.S. GUI](https://i.imgur.com/example.png) <!-- Replace with a real screenshot link if you have one -->
+<img width="626" height="313" alt="image" src="https://github.com/user-attachments/assets/81414417-abc6-4011-a1ee-2949986b7188" />
+ <!-- Replace with a real screenshot link if you have one -->
 
 J.A.R.V.I.S. is a sophisticated, voice-activated personal AI assistant built with Python. It integrates multiple cutting-edge AI services to provide a seamless, conversational experience for managing tasks, answering questions, and controlling your system.
 
