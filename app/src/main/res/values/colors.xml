@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Healthcare Application Colors -->
+    <color name="seed">#4CAF50</color>
+    <color name="md_theme_light_primary">#2E7D32</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#A5D6A7</color>
+    <color name="md_theme_light_onPrimaryContainer">#1B5E20</color>
+    <color name="md_theme_light_secondary">#43A047</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#C8E6C9</color>
+    <color name="md_theme_light_onSecondaryContainer">#2E7D32</color>
+    <color name="md_theme_light_tertiary">#81C784</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#E8F5E8</color>
+    <color name="md_theme_light_onTertiaryContainer">#1B5E20</color>
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_background">#FDFDF7</color>
+    <color name="md_theme_light_onBackground">#1A1C18</color>
+    <color name="md_theme_light_surface">#FDFDF7</color>
+    <color name="md_theme_light_onSurface">#1A1C18</color>
+    <color name="md_theme_light_surfaceVariant">#DFE4D7</color>
+    <color name="md_theme_light_onSurfaceVariant">#43483E</color>
+    <color name="md_theme_light_outline">#73796E</color>
+    <color name="md_theme_light_inverseOnSurface">#F1F1EB</color>
+    <color name="md_theme_light_inverseSurface">#2F312D</color>
+    <color name="md_theme_light_inversePrimary">#8BC34A</color>
+    <color name="md_theme_light_shadow">#000000</color>
+    <color name="md_theme_light_surfaceTint">#2E7D32</color>
+    <color name="md_theme_light_outlineVariant">#C3C8BC</color>
+    <color name="md_theme_light_scrim">#000000</color>
+
+    <!-- Healthcare Status Colors -->
+    <color name="health_safe">#4CAF50</color>
+    <color name="health_caution">#FF9800</color>
+    <color name="health_danger">#F44336</color>
+    <color name="health_unknown">#9E9E9E</color>
+    
+    <!-- Medication Reminder Colors -->
+    <color name="reminder_due">#F44336</color>
+    <color name="reminder_upcoming">#FF9800</color>
+    <color name="reminder_taken">#4CAF50</color>
+    <color name="reminder_missed">#9E9E9E</color>
+</resources>

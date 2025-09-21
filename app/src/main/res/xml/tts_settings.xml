@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tts-engine xmlns:android="http://schemas.android.com/apk/res/android">
+    <settings
+        android:language="en"
+        android:country="US"
+        android:variant="female"
+        android:speed="normal"
+        android:pitch="normal" />
+</tts-engine>

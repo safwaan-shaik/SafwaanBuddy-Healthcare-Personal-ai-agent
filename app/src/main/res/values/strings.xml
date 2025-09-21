@@ -1,0 +1,105 @@
+<resources>
+    <!-- SafwaanBuddy Healthcare Application Strings -->
+    <string name="app_name">SafwaanBuddy</string>
+    
+    <!-- Welcome and Onboarding -->
+    <string name="welcome_title">Welcome to SafwaanBuddy</string>
+    <string name="welcome_subtitle">Your Personal Healthcare Companion</string>
+    <string name="welcome_description">Advanced pregnancy care with AI-powered medication management and health monitoring</string>
+    
+    <!-- Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_medications">Medications</string>
+    <string name="nav_prescriptions">Prescriptions</string>
+    <string name="nav_lab_results">Lab Results</string>
+    <string name="nav_health_metrics">Health Metrics</string>
+    <string name="nav_voice_assistant">Voice Assistant</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Prescription Processing -->
+    <string name="prescription_scan_title">Scan Prescription</string>
+    <string name="prescription_scan_instruction">Position your prescription within the frame</string>
+    <string name="prescription_processing">Processing prescription…</string>
+    <string name="prescription_success">Prescription processed successfully</string>
+    <string name="prescription_error">Failed to process prescription</string>
+    
+    <!-- Medication Management -->
+    <string name="medication_reminder_title">Medication Reminder</string>
+    <string name="medication_take_now">Take Now</string>
+    <string name="medication_snooze">Snooze</string>
+    <string name="medication_skip">Skip</string>
+    <string name="medication_taken">Medication taken</string>
+    <string name="medication_missed">Medication missed</string>
+    
+    <!-- Safety Alerts -->
+    <string name="safety_alert_high">High Priority Alert</string>
+    <string name="safety_alert_medium">Caution Required</string>
+    <string name="safety_alert_low">Information</string>
+    <string name="pregnancy_safe">Safe for pregnancy</string>
+    <string name="pregnancy_caution">Use with caution during pregnancy</string>
+    <string name="pregnancy_avoid">Avoid during pregnancy</string>
+    
+    <!-- Voice Assistant -->
+    <string name="voice_listening">Listening…</string>
+    <string name="voice_processing">Processing your request…</string>
+    <string name="voice_error">Sorry, I didn\'t understand that</string>
+    <string name="voice_help">You can ask about medications, health metrics, or appointments</string>
+    
+    <!-- Health Metrics -->
+    <string name="health_metric_blood_pressure">Blood Pressure</string>
+    <string name="health_metric_weight">Weight</string>
+    <string name="health_metric_temperature">Temperature</string>
+    <string name="health_metric_heart_rate">Heart Rate</string>
+    
+    <!-- Lab Results -->
+    <string name="lab_result_normal">Normal</string>
+    <string name="lab_result_elevated">Elevated</string>
+    <string name="lab_result_critical">Critical</string>
+    <string name="lab_result_view_details">View Details</string>
+    
+    <!-- Emergency -->
+    <string name="emergency_alert">Emergency Alert</string>
+    <string name="emergency_contact">Contact Emergency Services</string>
+    <string name="emergency_call">Call 911</string>
+    
+    <!-- Settings -->
+    <string name="settings_security">Security</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_backup">Backup &amp; Sync</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_about">About</string>
+    
+    <!-- Security -->
+    <string name="biometric_prompt_title">Authenticate</string>
+    <string name="biometric_prompt_subtitle">Use your biometric to access healthcare data</string>
+    <string name="biometric_prompt_description">Your healthcare information is protected</string>
+    
+    <!-- Permissions -->
+    <string name="permission_camera_title">Camera Permission</string>
+    <string name="permission_camera_message">Camera access is required to scan prescriptions</string>
+    <string name="permission_notification_title">Notification Permission</string>
+    <string name="permission_notification_message">Notifications are essential for medication reminders</string>
+    
+    <!-- Errors -->
+    <string name="error_network">Network connection error</string>
+    <string name="error_database">Database error occurred</string>
+    <string name="error_encryption">Security error - please contact support</string>
+    <string name="error_generic">An unexpected error occurred</string>
+    
+    <!-- Actions -->
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_share">Share</string>
+    
+    <!-- Content Descriptions for Accessibility -->
+    <string name="cd_prescription_camera">Camera for prescription scanning</string>
+    <string name="cd_medication_icon">Medication icon</string>
+    <string name="cd_health_status">Health status indicator</string>
+    <string name="cd_emergency_button">Emergency contact button</string>
+    <string name="cd_voice_assistant">Voice assistant microphone</string>
+</resources>
