@@ -1,6 +1,17 @@
 from AppOpener import close,open as appopen
 from webbrowser import open as webopen
-from pywhatkit import search, playonyt
+# Handle SSL issues with pywhatkit import
+try:
+    from pywhatkit import search, playonyt
+except Exception as e:
+    print(f"Warning: pywhatkit import failed due to SSL issue: {e}")
+    # Define fallback functions
+    def search(query):
+        import webbrowser
+        webbrowser.open(f"https://www.google.com/search?q={query}")
+    def playonyt(query):
+        import webbrowser
+        webbrowser.open(f"https://www.youtube.com/results?search_query={query}")
 from dotenv import dotenv_values
 from bs4 import BeautifulSoup
 from rich import print
@@ -13,9 +24,29 @@ import pyautogui
 import asyncio
 import os
 import datetime
-from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+# Audio control imports - fallback to keyboard shortcuts if admin access not available
+try:
+    from ctypes import cast, POINTER
+    from comtypes import CLSCTX_ALL
+    from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+    AUDIO_CONTROL_AVAILABLE = True
+except Exception as e:
+    print(f"Note: Advanced audio control not available without admin access: {e}")
+    print("Using keyboard shortcuts for audio control instead.")
+    AUDIO_CONTROL_AVAILABLE = False
+
+# Import enhanced features
+try:
+    from Backend.EnhancedFeatures import (
+        get_weather_info, get_news_headlines, get_stock_price, 
+        send_email_message, tell_joke, search_wikipedia_info,
+        find_place_location, get_cricket_info, parse_enhanced_command
+    )
+    ENHANCED_FEATURES_AVAILABLE = True
+    print("✅ Enhanced features loaded successfully")
+except ImportError as e:
+    print(f"⚠️ Enhanced features not available: {e}")
+    ENHANCED_FEATURES_AVAILABLE = False
 
 "------------------------------------------------------------------------------------------------------------------------------------"
 env_vars = dotenv_values(".env")
@@ -156,8 +187,14 @@ def System(command):
         volume_up()
     elif command in ('volume down', 'decrease volume'):
         volume_down()
-    if command == 'shut down computer':
-        os.system("shutdown /s /t 1")
+    elif command == 'shut down computer':
+        # Use user-level shutdown command that doesn't require admin
+        try:
+            # First try user-level shutdown
+            os.system("shutdown /s /t 60 /c \"J.A.R.V.I.S. shutdown requested\"")
+            return "Shutdown initiated. The computer will shutdown in 60 seconds. You can cancel with 'shutdown /a' if needed."
+        except Exception as e:
+            return "I don't have permission to shutdown the computer. Please do it manually or run with administrator privileges."
     elif command == 'minimize all':
         keyboard.send('win + d')
 
@@ -166,7 +203,10 @@ def System(command):
         
 def GenerateImage(Topic):
     Topic = Topic.replace("generate image ", "").replace("of this", "")
-    with open(r"D:\J.A.R.V.i.S - Copy\J.A.R.V.I.S-A.I\Frontend\Files\ImageGeneration.data", "w") as f:
+    # Use relative path instead of hardcoded path
+    image_data_file = os.path.join("Data", "ImageGeneration.data")
+    os.makedirs("Data", exist_ok=True)  # Ensure Data directory exists
+    with open(image_data_file, "w") as f:
         f.write(f"{Topic},true")
     return True
 
@@ -182,6 +222,38 @@ def Screenshot(_):
     except Exception as e:
         print(f"[Automation] Screenshot failed: {e}")
         return False
+
+def HandleEnhancedFeatures(command):
+    """Handle enhanced features from AI-JARVIS integration"""
+    if not ENHANCED_FEATURES_AVAILABLE:
+        return "Enhanced features not available."
+    
+    try:
+        action, parameter = parse_enhanced_command(command)
+        
+        if action == "weather":
+            return get_weather_info(parameter)
+        elif action == "news":
+            return get_news_headlines(parameter)
+        elif action == "stock":
+            return get_stock_price(parameter)
+        elif action == "joke":
+            return tell_joke()
+        elif action == "wikipedia":
+            return search_wikipedia_info(parameter)
+        elif action == "location":
+            return find_place_location(parameter)
+        elif action == "cricket":
+            return get_cricket_info()
+        elif action == "email":
+            # For email, we'd need to parse more details
+            return "Email functionality available. Please specify recipient, subject, and message."
+        else:
+            return f"Enhanced feature '{action}' not implemented yet."
+            
+    except Exception as e:
+        print(f"Error in enhanced features: {e}")
+        return f"Error processing enhanced feature: {str(e)}"
 
 async def TranslateAndExecute(commands: list[str]):
     """
@@ -240,6 +312,11 @@ async def TranslateAndExecute(commands: list[str]):
 
         elif command.startswith("screenshot"):
             fun = asyncio.to_thread(Screenshot, command)
+            funcs.append(fun)
+
+        # Enhanced features integration
+        elif ENHANCED_FEATURES_AVAILABLE and any(command.startswith(cmd) for cmd in ['weather', 'news', 'headlines', 'stock price', 'share price', 'tell joke', 'joke', 'wikipedia', 'tell me about', 'find location', 'where is', 'location of', 'cricket score', 'cricket', 'send email', 'email']):
+            fun = asyncio.to_thread(HandleEnhancedFeatures, command)
             funcs.append(fun)
 
         else:

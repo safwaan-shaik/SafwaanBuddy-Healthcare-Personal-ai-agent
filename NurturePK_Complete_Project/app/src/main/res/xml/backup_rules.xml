@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Include the reminder database for backup -->
+    <include domain="database" path="reminder_database"/>
+    <!-- Exclude any temporary files -->
+    <exclude domain="file" path="temp/"/>
+</full-backup-content>

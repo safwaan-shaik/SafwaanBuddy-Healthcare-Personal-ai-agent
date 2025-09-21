@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">NurturePK</string>
+    
+    <!-- Main Activity Strings -->
+    <string name="main_title">My Reminders</string>
+    <string name="add_reminder">Add Reminder</string>
+    <string name="no_reminders">No reminders yet</string>
+    <string name="tap_to_add">Tap + to add your first reminder</string>
+    
+    <!-- Add Reminder Dialog Strings -->
+    <string name="add_new_reminder">Add New Reminder</string>
+    <string name="reminder_title">Title</string>
+    <string name="reminder_message">Message</string>
+    <string name="reminder_type">Reminder Type</string>
+    <string name="recurring_reminder">Recurring reminder</string>
+    <string name="scheduled_date">Scheduled Date: %1$s</string>
+    <string name="scheduled_time">Scheduled Time: %1$s</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    
+    <!-- Reminder Types -->
+    <string name="medication">Medication</string>
+    <string name="nutrition">Nutrition</string>
+    <string name="activity">Activity</string>
+    
+    <!-- Reminder Card Strings -->
+    <string name="type_label">Type: %1$s</string>
+    <string name="scheduled_label">Scheduled: %1$s</string>
+    <string name="delete">Delete</string>
+    
+    <!-- Notification Strings -->
+    <string name="medication_channel_name">Medication Reminders</string>
+    <string name="nutrition_channel_name">Nutrition Reminders</string>
+    <string name="activity_channel_name">Activity Reminders</string>
+    <string name="medication_channel_description">Notifications for medication reminders</string>
+    <string name="nutrition_channel_description">Notifications for nutrition reminders</string>
+    <string name="activity_channel_description">Notifications for activity reminders</string>
+    
+    <!-- Test Notification -->
+    <string name="test_notification_title">NurturePK Test</string>
+    <string name="test_notification_message">Notification system is working!</string>
+    
+    <!-- Error Messages -->
+    <string name="error_title_required">Title is required</string>
+    <string name="error_invalid_date">Please select a valid date</string>
+    <string name="error_past_date">Cannot schedule reminder in the past</string>
+    <string name="error_permission_denied">Notification permission denied</string>
+    
+    <!-- Success Messages -->
+    <string name="reminder_saved">Reminder saved successfully</string>
+    <string name="reminder_deleted">Reminder deleted</string>
+    <string name="reminders_rescheduled">Reminders rescheduled after reboot</string>
+</resources>

@@ -1,0 +1,49 @@
+# Core dependencies
+python-dotenv
+requests
+rich
+keyboard
+mtranslate
+
+# AI and ML services
+cohere
+groq
+openai>=1.0.0
+
+# Web automation (might need troubleshooting)
+selenium
+webdriver-manager
+googlesearch-python
+bs4
+
+# Image processing
+pillow
+opencv-python>=4.5.0
+numpy>=1.21.0
+
+# Audio and TTS
+pygame
+edge-tts
+
+# Automation
+pyautogui
+AppOpener
+pywhatkit
+
+# GUI - PyQt5 alternative packages if main fails
+PyQt5
+# Alternative: PySide6
+
+# Healthcare module dependencies
+cryptography>=3.4.8
+APScheduler>=3.10.0
+sqlalchemy>=1.4.0
+pytesseract>=0.3.10
+
+# OCR alternative (if tesseract fails)
+# easyocr
+
+# Web framework
+flask>=2.0.0
+flask-login>=0.6.0
+requests-oauthlib>=1.3.0

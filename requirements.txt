@@ -16,3 +16,21 @@ PyQt5
 pyautogui
 webdriver-manager
 googlesearch-python
+# Healthcare Module Dependencies
+openai>=1.0.0
+cryptography>=3.4.8
+APScheduler>=3.10.0
+sqlalchemy>=1.4.0
+tesseract-python>=0.0.1
+pytesseract>=0.3.10
+opencv-python>=4.5.0
+numpy>=1.21.0
+flask>=2.0.0
+flask-login>=0.6.0
+requests-oauthlib>=1.3.0
+# Enhanced Features Dependencies
+wikipedia>=1.4.0
+geocoder>=1.38.1
+smtplib-ssl>=1.0.0
+beautifulsoup4>=4.10.0
+json5>=0.9.10

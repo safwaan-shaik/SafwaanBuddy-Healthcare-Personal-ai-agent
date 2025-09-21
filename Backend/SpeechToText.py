@@ -67,8 +67,16 @@ chrome_options.add_argument("--use-fake-ui-for-media-stream")
 chrome_options.add_argument("--use-fake-device-for-media-stream")
 chrome_options.add_argument("--headless=new")
 
-service = Service(ChromeDriverManager().install())
-driver = webdriver.Edge(service=service, options=chrome_options)
+# Handle SSL issues with WebDriver manager
+try:
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Edge(service=service, options=chrome_options)
+except Exception as e:
+    print(f"Warning: WebDriver manager failed due to SSL issue: {e}")
+    print("Falling back to speech_recognition library...")
+    # Use speech_recognition as fallback
+    import speech_recognition as sr
+    driver = None
 
 TempDirPath = rf"{current_dir}\Frontend\Files"
 
@@ -101,49 +109,60 @@ def UniversalTranslator(Text):
       return english_trans.capitalize()
 
 def SpeechRecognition():
-      driver.get(f"file:///{Link}")
-      driver.find_element(by=By.ID, value="start").click()
-      timeout = 30
-      import time
-      start = time.time()
-      while True:
-            try:
-                  Text = driver.find_element(by=By.ID, value='output').text
-                  if Text:
+    if driver is not None:
+        # Use web-based speech recognition
+        try:
+            driver.get(f"file:///{Link}")
+            driver.find_element(by=By.ID, value="start").click()
+            timeout = 30
+            import time
+            start = time.time()
+            while True:
+                try:
+                    Text = driver.find_element(by=By.ID, value='output').text
+                    if Text:
                         driver.find_element(by=By.ID, value="end").click()
-
                         if( (InputLang.lower() == "en") or ("en" in InputLang.lower())):
-                              return QueryModifier(Text)
+                            return QueryModifier(Text)
                         else:
-                              SetAssistantStatus("Translating....")
-                              return QueryModifier(UniversalTranslator(Text))
+                            SetAssistantStatus("Translating....")
+                            return QueryModifier(UniversalTranslator(Text))
                         
-                  if(time.time() - start > timeout):
+                    if(time.time() - start > timeout):
                         print("Speech Recog timed out.")
                         return ""
-            except Exception as e:
-                  print("{:-^30}".format("Error"))
-                  print(e)
-                  print("{:-^30}".format("Error"))
-      # recognizer = sr.Recognizer()
-      # with sr.Microphone() as source:
-      #     print("Listening...")
-      #     audio = recognizer.listen(source)
-      # try:
-      #       text = recognizer.recognize_google(audio, language='en-IN')
-      #       if( (InputLang.lower() == "en") or ("en" in InputLang.lower())):
-                  
-      #             return QueryModifier(Text)
-      #       else:
-      #             SetAssistantStatus("Translating....")
-      #             return QueryModifier(UniversalTranslator(Text))
-
-      # except sr.UnknownValueError:
-      #     print("Sorry, I could not understand the audio.")
-      #     return ""
-      # except sr.RequestError as e:
-      #     print(f"Could not request results; {e}")
-      #     return ""
+                except Exception as e:
+                    print("{:-^30}".format("Error"))
+                    print(e)
+                    print("{:-^30}".format("Error"))
+                    return ""
+        except Exception as e:
+            print(f"WebDriver speech recognition failed: {e}")
+            pass
+    
+    # Fallback to speech_recognition library
+    try:
+        recognizer = sr.Recognizer()
+        with sr.Microphone() as source:
+            print("Listening...")
+            audio = recognizer.listen(source)
+        
+        text = recognizer.recognize_google(audio, language='en-IN')
+        if( (InputLang.lower() == "en") or ("en" in InputLang.lower())):
+            return QueryModifier(text)
+        else:
+            SetAssistantStatus("Translating....")
+            return QueryModifier(UniversalTranslator(text))
+    
+    except sr.UnknownValueError:
+        print("Sorry, I could not understand the audio.")
+        return ""
+    except sr.RequestError as e:
+        print(f"Could not request results; {e}")
+        return ""
+    except Exception as e:
+        print(f"Speech recognition failed: {e}")
+        return ""
       
 
 if __name__ == "__main__":
